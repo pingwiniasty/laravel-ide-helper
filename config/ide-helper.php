@@ -178,4 +178,16 @@ return array(
         'integer' => 'int',
         'boolean' => 'bool',
    ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Schema configuration
+    |--------------------------------------------------------------------------
+    |
+    | If you using database schemas (like in Postgres or MSSQL) only for good DB order
+    |
+     */
+
+    'schema_only_for_order' => false,
+
 );

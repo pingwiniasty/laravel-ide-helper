@@ -327,8 +327,11 @@ class ModelsCommand extends Command
         }
 
         $database = null;
-        if (strpos($table, '.')) {
-            list($database, $table) = explode('.', $table);
+
+        if($this->hasSchemaOnlyForOrder() === false) {
+            if (strpos($table, '.')) {
+                list($database, $table) = explode('.', $table);
+            }
         }
 
         $columns = $schema->listTableColumns($table, $database);
@@ -727,6 +730,11 @@ class ModelsCommand extends Command
     protected function hasCamelCaseModelProperties()
     {
         return $this->laravel['config']->get('ide-helper.model_camel_case_properties', false);
+    }
+
+    protected function hasSchemaOnlyForOrder()
+    {
+        return $this->laravel['config']->get('ide-helper.schema_only_for_order',false);
     }
 
     /**
